@@ -1,5 +1,7 @@
 const sqlite = require('sqlite');
-const dbConnection = sqlite.open('database/db.sqlite', { Promise });
+const path = require('path');
+
+const dbConnection = sqlite.open(path.resolve(__dirname, './database/db.sqlite'), { Promise });
 
 module.exports = {
     async show(req, res) {
