@@ -1,0 +1,22 @@
+<%- include('layouts/header') %> 
+    <h2>
+        Editar vaga: <%= vacancy.title %> - 
+        <a href="/admin/vagas">Listar vagas</a>
+    </h2>
+    <form action="/admin/vagas/<%= vacancy.id %>" method="POST">
+        <label for="title">Título:</label>
+        <input type="text" name="title" id="title" value="<%= vacancy.title %>"/>
+        <br/>
+        <label for="description">Descrição</label>
+        <textarea name="description" id="description" cols="30" rows="10"><%= vacancy.description %></textarea>
+        <br/>
+        <label for="category_id">Categoria:</label>
+        <select name="category_id" id="category">
+            <% categories.forEach(category => { %>
+                <option value="<%= category.id %>" <%= (category.id === vacancy.category_id ? 'selected' : '') %> ><%= category.name %> </option>
+            <% }) %>
+        </select>
+        <br/>
+        <button type="submit">Editar Vaga</button>
+    </form>
+<%- include('layouts/footer') %>
